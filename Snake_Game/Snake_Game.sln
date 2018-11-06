@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 15 for Windows Desktop
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake_Game", "Snake_Game.csproj", "{7D624FA3-BE83-4A12-B2B9-A7F0D93AF3D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D624FA3-BE83-4A12-B2B9-A7F0D93AF3D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D624FA3-BE83-4A12-B2B9-A7F0D93AF3D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D624FA3-BE83-4A12-B2B9-A7F0D93AF3D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D624FA3-BE83-4A12-B2B9-A7F0D93AF3D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {838BB67A-B623-4572-B4A4-C7D9FD9C9A0E}
+	EndGlobalSection
+EndGlobal
