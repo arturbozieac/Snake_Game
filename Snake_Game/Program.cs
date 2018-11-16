@@ -9,7 +9,8 @@ namespace Snake_Game
     class Program
     {
         static void Main(string[] args)
-        { 
+        {
+
             HorizontalLine topLine = new HorizontalLine(1, 30, 1, '_');
             HorizontalLine bottomLine = new HorizontalLine(1, 30, 20, '_');
             topLine.Drow();
@@ -21,9 +22,13 @@ namespace Snake_Game
             leftLine.Drow();
             rightLine.Drow();
 
-            Console.ReadLine();
+           
 
-       
+            Point p = new Point(5, 4, '*');
+            Snake snake = new Snake( p, 5, Direction.RIGHT);
+            snake.Drow();
+
+            Console.ReadLine();
         }
     }
 }
