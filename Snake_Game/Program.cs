@@ -10,14 +10,14 @@ namespace Snake_Game
     {
         static void Main(string[] args)
         {
-
-            HorizontalLine topLine = new HorizontalLine(1, 30, 1, '_');
-            HorizontalLine bottomLine = new HorizontalLine(1, 30, 20, '_');
+            Console.SetCursorPosition(40, 40);
+            HorizontalLine topLine = new HorizontalLine(1, 40, 1, '_');
+            HorizontalLine bottomLine = new HorizontalLine(1, 40, 25, '_');
             topLine.Drow();
             bottomLine.Drow();
             
-            VerticalLine leftLine = new VerticalLine(2, 20, 1, '|');
-            VerticalLine rightLine = new VerticalLine(2, 20, 30, '|');
+            VerticalLine leftLine = new VerticalLine(2, 25, 1, '|');
+            VerticalLine rightLine = new VerticalLine(2, 25, 40, '|');
 
             leftLine.Drow();
             rightLine.Drow();
@@ -28,17 +28,30 @@ namespace Snake_Game
             Snake snake = new Snake( p, 5, Direction.RIGHT);
             snake.Drow();
 
+            FoodCreator foodCreator = new FoodCreator(30, 20, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
             while (true)
             {
+                if(snake.Eat(food))
+                {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    snake.Move();
+                }
+
+                System.Threading.Thread.Sleep(100);
+
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
-                    snake.HandleKey( key.Key );
+                    snake.HandleKey(key.Key);
                 }
-                System.Threading.Thread.Sleep(100);
-                snake.Move();
             }
-        
     
             Console.ReadLine();
         }
