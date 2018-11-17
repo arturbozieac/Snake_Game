@@ -28,6 +28,18 @@ namespace Snake_Game
             Snake snake = new Snake( p, 5, Direction.RIGHT);
             snake.Drow();
 
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey( key.Key );
+                }
+                System.Threading.Thread.Sleep(100);
+                snake.Move();
+            }
+        
+    
             Console.ReadLine();
         }
     }
