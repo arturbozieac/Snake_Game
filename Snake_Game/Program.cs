@@ -1,40 +1,36 @@
- using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
-namespace Snake_Game
+namespace Snake
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.SetCursorPosition(40, 40);
-            HorizontalLine topLine = new HorizontalLine(1, 40, 1, '_');
-            HorizontalLine bottomLine = new HorizontalLine(1, 40, 25, '_');
-            topLine.Drow();
-            bottomLine.Drow();
             
-            VerticalLine leftLine = new VerticalLine(2, 25, 1, '|');
-            VerticalLine rightLine = new VerticalLine(2, 25, 40, '|');
 
-            leftLine.Drow();
-            rightLine.Drow();
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
 
-           
+            // Отрисовка точек			
+            Point p = new Point(4, 5, '*');
+            Snake snake = new Snake(p, 4, Direction.RIGHT);
+            snake.Draw();
 
-            Point p = new Point(5, 4, '*');
-            Snake snake = new Snake( p, 5, Direction.RIGHT);
-            snake.Drow();
-
-            FoodCreator foodCreator = new FoodCreator(30, 20, '$');
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
 
             while (true)
             {
-                if(snake.Eat(food))
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
+                if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
                     food.Draw();
@@ -44,16 +40,37 @@ namespace Snake_Game
                     snake.Move();
                 }
 
-                System.Threading.Thread.Sleep(100);
-
+                Thread.Sleep(100);
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     snake.HandleKey(key.Key);
                 }
             }
-    
+            WriteGameOver();
             Console.ReadLine();
         }
+
+
+        static void WriteGameOver()
+        {
+            int xOffset = 25;
+            int yOffset = 8;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(xOffset, yOffset++);
+            WriteText("============================", xOffset, yOffset++);
+            WriteText("         Game Over", xOffset + 1, yOffset++);
+            
+            WriteText("  Author : Artur Bozieac", xOffset + 2, yOffset++);
+            WriteText("     Special for myself", xOffset + 1, yOffset++);
+            WriteText("============================", xOffset, yOffset++);
+        }
+
+        static void WriteText(String text, int xOffset, int yOffset)
+        {
+            Console.SetCursorPosition(xOffset, yOffset);
+            Console.WriteLine(text);
+        }
+
     }
 }

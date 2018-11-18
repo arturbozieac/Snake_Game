@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake_Game
+namespace Snake
 {
     class FoodCreator
     {
@@ -14,9 +14,9 @@ namespace Snake_Game
 
         Random random = new Random();
 
-        public FoodCreator(int mapWidht, int mapHeight, char sym)
+        public FoodCreator(int mapWidth, int mapHeight, char sym)
         {
-            this.mapWidht = mapWidht;
+            this.mapWidht = mapWidth;
             this.mapHeight = mapHeight;
             this.sym = sym;
         }
@@ -25,7 +25,7 @@ namespace Snake_Game
         {
             int x = random.Next(2, mapWidht - 2);
             int y = random.Next(2, mapHeight - 2);
-            return new Point(x, y, sym );
+            return new Point(x, y, sym);
         }
     }
 }

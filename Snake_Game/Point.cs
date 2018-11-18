@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake_Game
+namespace Snake
 {
     class Point
     {
@@ -12,11 +12,15 @@ namespace Snake_Game
         public int y;
         public char sym;
 
-        public Point(int _x, int _y, char _sym)
+        public Point()
         {
-            x = _x;
-            y = _y;
-            sym = _sym;
+        }
+
+        public Point(int x, int y, char sym)
+        {
+            this.x = x;
+            this.y = y;
+            this.sym = sym;
         }
 
         public Point(Point p)
@@ -28,11 +32,11 @@ namespace Snake_Game
 
         public void Move(int offset, Direction direction)
         {
-            if(direction == Direction.RIGHT)
+            if (direction == Direction.RIGHT)
             {
                 x = x + offset;
             }
-            else if(direction == Direction.LEFT)
+            else if (direction == Direction.LEFT)
             {
                 x = x - offset;
             }
@@ -67,6 +71,5 @@ namespace Snake_Game
         {
             return x + ", " + y + ", " + sym;
         }
-
     }
 }
